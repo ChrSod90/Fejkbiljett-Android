@@ -11,13 +11,14 @@ import com.fejkbiljett.android.Utils;
 
 public class GoteborgTicket extends Ticket {
 	final String zones[] = {"gbg", "gbg+", "gbg++", "gbg+++", "kalv"};
-	final int    price[] = {25,    49,      60,      93,      25};
-	final int redprice[] = {19,    37,      46,      70,      10};  
+	final int    price[] = {26,    50,      62,      96,      26};
+	final int redprice[] = {20,    39,      47,      72,      20};  
 	
-	final String unknownCode[] = { 	"4U", //2014-01-11 
+	final String unknownCode[] = { 	"2T", //2015-11-21
+									"4U", //2014-01-11 
 									"9Q", //2014-01-08
 									"4B", //2013-12-26 
-									"7D", //2013-12-23
+									"7D", //2013-12-23, 2015-04-07
 									"6M", //2011-06-30
 									"3V", //2011-06-04
 									"5V", //2011-05-16
@@ -87,7 +88,7 @@ public class GoteborgTicket extends Ticket {
 				if (bReduced) {
 					sPriceType = "SKOLUNGDOM";
 					sPrice = String.format(new Locale("sv"), "%.2f", (float) redprice[i]);
-					sCode = Utils.getRandChars("s", 1); //FIXME! (more reduced codes needed)
+					sCode = Utils.getRandChars("smd", 1);
 				}
 				else {
 					sPriceType = "VUXEN";
@@ -108,15 +109,16 @@ public class GoteborgTicket extends Ticket {
 					break;
 				case 1:
 					sCode = Utils.getRandChars("gG", 1) + Utils.getRandChars("sS", 1) + sCode;
-					sPriceStr =  pluses + " " + sPriceStr.replace("området ", "") + "s kommun " + pluses;	
+					sPriceStr =  pluses + " " + sPriceStr + " " + pluses;
 					break;
 				case 2:
-					sCode = Utils.getRandChars("uU", 1) + Utils.getRandChars("sS", 1) + sCode;
-					sPriceStr =  pluses + " " + sPriceStr.replace("området ", "") + "s kommun " + pluses;	
+					sCode = Utils.getRandChars("pP", 1) + Utils.getRandChars("lL", 1) + sCode; //As of a real ticket 2015-04-07
+					sPriceStr =  pluses + " " + sPriceStr + " " + pluses;
 					break;
 				case 3:
-					sCode = Utils.getRandChars("uU", 1) + Utils.getRandChars("sS", 1) + sCode;
-					sPriceStr =  pluses + " " + sPriceStr.replace("området ", "") + "s kommun " + pluses;	
+					//sCode = Utils.getRandChars("uU", 1) + Utils.getRandChars("sS", 1) + sCode;
+					sCode = Utils.getRandChars("pP", 1) + Utils.getRandChars("uUpP", 1) + sCode; //As of real reduced tickets 2015-11-21
+					sPriceStr =  pluses + " " + sPriceStr + " " + pluses;
 					break;
 				default:
 					//nothing
